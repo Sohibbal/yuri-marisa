@@ -1,11 +1,28 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SafeImage from '@/components/ui/SafeImage';
 import { personalData } from '@/data/portfolioData';
 
 export default function HeroSection() {
+  const fullName = 'Yuri Marisa';
+  const [displayedName, setDisplayedName] = useState('');
+
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index <= fullName.length) {
+        setDisplayedName(fullName.slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 110);
+
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -20,12 +37,12 @@ export default function HeroSection() {
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
-          {/* Left Column: Typography & CTAs (Mirroring style.png) */}
+          {/* Left Column: Typography with Boxed Typewriter Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 space-y-7 text-left"
+            className="lg:col-span-7 space-y-6 text-left"
           >
             {/* Minimal Eyebrow Pill */}
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-surface-muted border border-border-subtle text-xs font-medium text-text-muted">
@@ -33,16 +50,23 @@ export default function HeroSection() {
               <span>Ekonomi Pembangunan • Universitas Riau</span>
             </div>
 
-            {/* Huge Display Headline (Exact tracking & weight of style.png) */}
+            {/* Display Headline with Boxed Background & Typing Animation */}
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-6xl lg:text-[68px] font-extrabold tracking-tighter text-text-primary leading-[1.06]">
-                Riset ekonomi & kebijakan dalam satu portofolio.
-              </h1>
+              <div className="inline-block p-1.5 sm:p-2 rounded-2xl bg-surface-muted border border-border-subtle shadow-sm">
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-primary px-3 sm:px-4 py-1 flex items-center">
+                  <span>{displayedName}</span>
+                  <span className="inline-block w-[3px] h-[0.9em] bg-text-primary ml-1 animate-pulse" />
+                </h1>
+              </div>
+
+              <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-text-primary leading-tight">
+                Riset ekonomi regional & kebijakan pembangunan.
+              </p>
             </div>
 
             {/* Clean Subtitle Paragraph */}
             <p className="text-base sm:text-lg text-text-muted leading-relaxed max-w-xl font-normal">
-              {personalData.name}, mahasiswa tingkat akhir Universitas Riau dengan keahlian analisis ekonometri time-series, evaluasi perencanaan pembangunan desa berbasis IDM dan SDGs, serta rekam jejak magang di BAPPEDA Kabupaten Bengkalis.
+              Mahasiswa tingkat akhir Universitas Riau dengan keahlian analisis ekonometri time-series, evaluasi perencanaan pembangunan desa berbasis IDM dan SDGs, serta rekam jejak magang di BAPPEDA Kabupaten Bengkalis.
             </p>
 
             {/* Clean Action Buttons (Minimal icons, exact style.png treatment) */}
@@ -66,7 +90,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Layered Offset Card (Mirroring style.png's visual card arrangement) */}
+          {/* Right Column: Layered Offset Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -74,7 +98,7 @@ export default function HeroSection() {
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
             <div className="relative w-full max-w-[340px] sm:max-w-[380px]">
-              {/* Offset Accent Backdrop Container (like the lime block in style.png) */}
+              {/* Offset Accent Backdrop Container */}
               <div className="absolute top-4 -right-4 w-full h-full rounded-2xl bg-surface-muted border border-border-subtle" />
 
               {/* Front Portrait Card */}
@@ -102,7 +126,7 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* 3-Metric Divider Row Below Hero (Exact replica of style.png Rp 0 | 1x | 0 bar) */}
+        {/* 3-Metric Divider Row Below Hero */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

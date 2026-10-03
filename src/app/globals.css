@@ -38,3 +38,24 @@ body {
   font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.015em;
 }
+
+/* Smooth Ease-in-out Theme Transition */
+html,
+body,
+header,
+footer,
+section,
+main,
+div,
+button,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+span {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

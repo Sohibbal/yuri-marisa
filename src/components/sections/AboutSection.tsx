@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import SafeImage from '@/components/ui/SafeImage';
 import { toolsData, personalData } from '@/data/portfolioData';
 
 export default function AboutSection() {
@@ -47,10 +48,20 @@ export default function AboutSection() {
                 key={tool.name}
                 className="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group"
               >
-                {/* Left: Tool Code Badge & Name */}
+                {/* Left: Tool Icon Box & Name */}
                 <div className="flex items-center space-x-3.5 sm:w-1/3 shrink-0">
-                  <div className="w-8 h-8 rounded-lg bg-surface-muted border border-border-subtle flex items-center justify-center text-xs font-bold text-text-primary shrink-0">
-                    {tool.name.slice(0, 2).toUpperCase()}
+                  <div className="relative w-9 h-9 rounded-xl bg-surface-muted border border-border-subtle flex items-center justify-center text-xs font-bold text-text-primary shrink-0 overflow-hidden shadow-sm">
+                    {tool.iconPath ? (
+                      <SafeImage
+                        src={tool.iconPath}
+                        alt={tool.name}
+                        fill
+                        className="object-contain p-1.5"
+                        fallbackText={tool.name.slice(0, 2).toUpperCase()}
+                      />
+                    ) : (
+                      <span>{tool.name.slice(0, 2).toUpperCase()}</span>
+                    )}
                   </div>
                   <div>
                     <h3 className="font-bold text-sm sm:text-base text-text-primary group-hover:opacity-80 transition-opacity">

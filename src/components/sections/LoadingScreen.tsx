@@ -11,13 +11,15 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Cek sessionStorage agar tidak mengulang jika direfresh dalam sesi yang sama
+    // Memberikan jeda waktu lebih tenang dan elegan agar animasi kinetic dinikmati
     const hasVisited = sessionStorage.getItem('yuri_visited');
+    const delayTime = hasVisited ? 1400 : 2800;
+
     const timer = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem('yuri_visited', 'true');
       if (onComplete) onComplete();
-    }, hasVisited ? 700 : 1600);
+    }, delayTime);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -31,12 +33,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
           exit={{
             y: '-100%',
             opacity: 0.95,
-            transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+            transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] },
           }}
           className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background text-text-primary pointer-events-auto select-none"
         >
           {/* Subtle background ambient glow */}
-          <div className="absolute w-96 h-96 rounded-full bg-accent-brand/10 blur-3xl pointer-events-none" />
+          <div className="absolute w-96 h-96 rounded-full bg-accent-brand/5 blur-3xl pointer-events-none" />
 
           <div className="relative flex flex-col items-center space-y-6">
             {/* Monogram SVG Kinetic Drawing */}
@@ -45,7 +47,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 viewBox="0 0 100 100"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-20 h-20 text-accent-brand drop-shadow-sm"
+                className="w-20 h-20 text-text-primary drop-shadow-sm"
               >
                 {/* Outer rounded geometric frame */}
                 <motion.rect
@@ -56,10 +58,10 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                   rx="22"
                   stroke="currentColor"
                   strokeWidth="2.5"
-                  strokeOpacity="0.25"
+                  strokeOpacity="0.2"
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={{ duration: 1, ease: 'easeInOut' }}
+                  transition={{ duration: 1.2, ease: 'easeInOut' }}
                 />
 
                 {/* Monogram 'Y' Path */}
@@ -71,7 +73,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                   strokeLinejoin="round"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.2, ease: 'easeInOut' }}
+                  transition={{ duration: 1, delay: 0.25, ease: 'easeInOut' }}
                 />
                 <motion.path
                   d="M 56 26 L 42 46"
@@ -81,7 +83,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                   strokeLinejoin="round"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.7, delay: 0.4, ease: 'easeInOut' }}
+                  transition={{ duration: 0.8, delay: 0.5, ease: 'easeInOut' }}
                 />
 
                 {/* Monogram 'M' Path */}
@@ -93,7 +95,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                   strokeLinejoin="round"
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 1.1, delay: 0.35, ease: 'easeInOut' }}
+                  transition={{ duration: 1.2, delay: 0.45, ease: 'easeInOut' }}
                 />
               </svg>
             </div>
@@ -102,7 +104,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.7, delay: 0.8 }}
               className="text-center space-y-1.5"
             >
               <h2 className="text-xl font-bold tracking-tight text-text-primary">
@@ -114,12 +116,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
             </motion.div>
 
             {/* Elegant Minimal Progress Bar */}
-            <div className="w-36 h-[2px] bg-border-subtle rounded-full overflow-hidden mt-2">
+            <div className="w-40 h-[2px] bg-border-subtle rounded-full overflow-hidden mt-2">
               <motion.div
                 initial={{ x: '-100%' }}
                 animate={{ x: '0%' }}
-                transition={{ duration: 1.1, ease: 'easeInOut' }}
-                className="w-full h-full bg-accent-brand"
+                transition={{ duration: 1.8, ease: 'easeInOut' }}
+                className="w-full h-full bg-text-primary"
               />
             </div>
           </div>

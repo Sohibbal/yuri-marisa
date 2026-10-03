@@ -43,6 +43,7 @@ export interface ToolItem {
   name: string;
   category: string;
   description: string;
+  iconPath?: string;
   iconType: 'eviews' | 'excel' | 'mendeley' | 'word' | 'canva' | 'capcut';
 }
 
