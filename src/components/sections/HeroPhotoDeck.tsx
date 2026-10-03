@@ -48,6 +48,13 @@ const initialPhotos: PhotoCardItem[] = [
   },
 ];
 
+// =========================================================================
+// PENGATURAN DELAY LOOPING FOTO HERO (dalam milidetik: 1000ms = 1 detik):
+// Ubah angka PHOTO_LOOP_DELAY di bawah ini sesuai selera Anda:
+// Contoh: 3000 = 3 detik (aktif saat ini), 4000 = 4 detik, 5000 = 5 detik
+// =========================================================================
+export const PHOTO_LOOP_DELAY = 3000;
+
 export default function HeroPhotoDeck() {
   const [deck, setDeck] = useState<PhotoCardItem[]>(initialPhotos);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -103,23 +110,7 @@ export default function HeroPhotoDeck() {
     }, 320);
   }, [deck, isTransitioning]);
 
-  // Jump directly to a specific card by moving it to the top
-  const handleSelectCard = useCallback(
-    (targetId: string) => {
-      if (isTransitioning || deck[0].id === targetId) return;
-      const targetIndex = deck.findIndex((c) => c.id === targetId);
-      if (targetIndex === -1) return;
-
-      setIsTransitioning(true);
-      setDeck((prev) => [...prev.slice(targetIndex), ...prev.slice(0, targetIndex)]);
-      setTimeout(() => {
-        setIsTransitioning(false);
-      }, 300);
-    },
-    [deck, isTransitioning]
-  );
-
-  // Auto-play timer (cycles every 6 seconds, pauses on hover/focus)
+  // Auto-play timer: berganti otomatis secara looping setiap PHOTO_LOOP_DELAY (3 detik)
   useEffect(() => {
     if (isHovered) {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
@@ -128,7 +119,7 @@ export default function HeroPhotoDeck() {
 
     autoPlayRef.current = setInterval(() => {
       handleNext();
-    }, 6000);
+    }, PHOTO_LOOP_DELAY);
 
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
@@ -146,10 +137,6 @@ export default function HeroPhotoDeck() {
     }
   };
 
-  // Find the original index of the current active card (1-based: 1..4)
-  const currentCard = deck[0];
-  const originalIndex = initialPhotos.findIndex((p) => p.id === currentCard.id);
-
   return (
     <div
       className="relative flex flex-col items-center w-full max-w-[340px] sm:max-w-[370px]"
@@ -158,7 +145,7 @@ export default function HeroPhotoDeck() {
       tabIndex={0}
       onKeyDown={handleKeyDown}
       role="region"
-      aria-label="Koleksi foto Yuri Marisa, tekan spasi atau tombol panah untuk berganti foto"
+      aria-label="Koleksi foto Yuri Marisa, berganti otomatis setiap 3 detik atau klik kartu untuk berganti foto"
     >
       {/* Visual Stack Card Deck Container */}
       <div className="relative w-full aspect-[3/4] select-none">
@@ -255,58 +242,6 @@ export default function HeroPhotoDeck() {
             </motion.div>
           );
         })}
-      </div>
-
-      {/* Tactile Deck Controls & Indicator Below the Card */}
-      <div className="w-full mt-6 pt-2 flex items-center justify-between px-1">
-        {/* Counter Badge */}
-        <div className="flex items-center space-x-2 text-xs font-semibold text-text-muted">
-          <span className="text-text-primary">0{originalIndex + 1}</span>
-          <span className="opacity-40">/</span>
-          <span>0{initialPhotos.length}</span>
-        </div>
-
-        {/* Minimal Dot Indicators */}
-        <div className="flex items-center space-x-1.5">
-          {initialPhotos.map((photo, i) => {
-            const isActive = i === originalIndex;
-            return (
-              <button
-                key={photo.id}
-                type="button"
-                onClick={() => handleSelectCard(photo.id)}
-                aria-label={`Pilih foto ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-brand ${
-                  isActive
-                    ? 'w-6 bg-accent-brand'
-                    : 'w-1.5 bg-border-subtle hover:bg-text-muted/40'
-                }`}
-              />
-            );
-          })}
-        </div>
-
-        {/* Next & Previous Action Buttons */}
-        <div className="flex items-center space-x-1.5">
-          <button
-            type="button"
-            onClick={handlePrev}
-            disabled={isTransitioning}
-            aria-label="Foto sebelumnya"
-            className="w-8 h-8 rounded-full border border-border-subtle bg-surface hover:bg-surface-muted active:scale-95 flex items-center justify-center text-xs text-text-primary transition-all disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-brand"
-          >
-            ←
-          </button>
-          <button
-            type="button"
-            onClick={handleNext}
-            disabled={isTransitioning}
-            aria-label="Foto berikutnya"
-            className="w-8 h-8 rounded-full border border-border-subtle bg-surface hover:bg-surface-muted active:scale-95 flex items-center justify-center text-xs text-text-primary transition-all disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-brand"
-          >
-            →
-          </button>
-        </div>
       </div>
     </div>
   );
