@@ -12,8 +12,8 @@ interface ResearchSectionProps {
 
 export default function ResearchSection({ onSelectImage, onSelectPdf }: ResearchSectionProps) {
   return (
-    <section id="riset" className="py-20 md:py-28 bg-background border-t border-border-subtle">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="riset" className="pb-20 md:pb-28 bg-background">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 border-t border-border-subtle">
         {/* Section Header */}
         <div className="max-w-2xl mb-16 space-y-3">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary leading-[1.15]">
@@ -38,13 +38,13 @@ export default function ResearchSection({ onSelectImage, onSelectPdf }: Research
                   onSelectPdf({
                     pdfUrl: pub.pdfUrl,
                     title: pub.title,
-                    subtitle: `${pub.journal} • ${pub.category}`,
+                    subtitle: `${pub.journal} (${pub.year})`,
                   });
                 } else if (onSelectImage) {
                   onSelectImage({
                     src: pub.previewImage,
                     title: pub.title,
-                    subtitle: `${pub.journal} • ${pub.category}`,
+                    subtitle: `${pub.journal} (${pub.year})`,
                   });
                 }
               }}
@@ -66,26 +66,26 @@ export default function ResearchSection({ onSelectImage, onSelectPdf }: Research
                   </div>
                 </div>
 
-                {/* Paper Information Details */}
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <p className="text-[11px] font-bold text-text-primary">
-                      {pub.journal}
-                    </p>
-                    <span className="text-[10px] px-2 py-0.5 rounded-md bg-surface-muted text-text-muted font-medium">
-                      {pub.category}
-                    </span>
-                  </div>
-
-                  <h3 className="font-bold text-base text-text-primary leading-snug line-clamp-2">
+                {/* Paper Information Details: Title first, then Journal Name & Year */}
+                <div className="space-y-2.5">
+                  <h3 className="font-bold text-base text-text-primary leading-snug line-clamp-2 group-hover:text-accent-brand transition-colors">
                     {pub.title}
                   </h3>
+
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-xs font-semibold text-text-muted line-clamp-1">
+                      {pub.journal}
+                    </p>
+                    <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-surface-muted border border-border-subtle text-text-primary font-bold shrink-0">
+                      {pub.year}
+                    </span>
+                  </div>
 
                   <p className="text-xs font-medium text-text-muted">
                     Penulis : <span className="text-text-primary">{pub.authors.join(', ')}</span>
                   </p>
 
-                  <p className="text-xs text-text-muted leading-relaxed line-clamp-3 pt-1 font-normal">
+                  <p className="text-xs text-text-muted leading-relaxed line-clamp-3 pt-0.5 font-normal">
                     {pub.abstract}
                   </p>
                 </div>

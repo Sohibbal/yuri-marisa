@@ -11,8 +11,8 @@ interface CertificatesSectionProps {
 
 export default function CertificatesSection({ onSelectImage }: CertificatesSectionProps) {
   return (
-    <section id="sertifikat" className="py-20 md:py-28 bg-background border-t border-border-subtle">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="sertifikat" className="pb-20 md:pb-28 bg-background">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 border-t border-border-subtle">
         {/* Section Header */}
         <div className="max-w-2xl mb-16 space-y-3">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary leading-[1.15]">

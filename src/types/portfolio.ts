@@ -9,6 +9,7 @@ export interface Publication {
   link?: string;
   previewImage: string;
   pdfUrl?: string;
+  year: string;
 }
 
 export interface ExperienceItem {

@@ -84,6 +84,7 @@ export const publicationsData: Publication[] = [
     focus: 'Evaluasi keselarasan perencanaan pembangunan berbasis data IDM dan capaian indikator SDGs Desa.',
     previewImage: '/images/publications/paper-sinergi.jpg',
     pdfUrl: '/documents/research/sinergi-resam-lapis.pdf',
+    year: '2026',
   },
   {
     id: 'strategia-modal-manusia',
@@ -101,6 +102,7 @@ export const publicationsData: Publication[] = [
     focus: 'Regresi linier berganda EViews 12 membuktikan signifikansi simultan pendidikan dan kesehatan terhadap modal manusia regional.',
     previewImage: '/images/publications/paper-strategia.jpg',
     pdfUrl: '/documents/research/strategia-modal-manusia.pdf',
+    year: '2025',
   },
   {
     id: 'kapalamada-agroindustri-sagu',
@@ -118,6 +120,7 @@ export const publicationsData: Publication[] = [
     focus: 'Analisis strategi rantai nilai komoditas unggulan daerah dan peningkatan nilai tambah produk turunan sagu.',
     previewImage: '/images/publications/paper-kapalamada.jpg',
     pdfUrl: '/documents/research/kapalamada-agroindustri-sagu.pdf',
+    year: '2025',
   },
 ];
 

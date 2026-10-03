@@ -7,8 +7,8 @@ import { toolsData, personalData } from '@/data/portfolioData';
 
 export default function AboutSection() {
   return (
-    <section id="tentang" className="py-20 md:py-28 bg-background border-t border-border-subtle">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="tentang" className="pb-20 md:pb-28 bg-background">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 border-t border-border-subtle">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column (Sticky Title & Subtitle, exactly like style.png) */}
           <motion.div

@@ -9,8 +9,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-12 border-t border-border-subtle bg-surface">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="pb-12 bg-surface">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 border-t border-border-subtle">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand Info */}
           <div className="space-y-1 text-center md:text-left">
