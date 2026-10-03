@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import SafeImage from '@/components/ui/SafeImage';
-import { personalData } from '@/data/portfolioData';
+import HeroPhotoDeck from '@/components/sections/HeroPhotoDeck';
 
 export default function HeroSection() {
   const words = ['Yuri Marisa', 'Yuriee', 'Urr'];
@@ -84,7 +83,7 @@ export default function HeroSection() {
 
             {/* Clean Subtitle Paragraph */}
             <p className="text-base sm:text-lg text-text-muted leading-relaxed max-w-xl font-normal">
-              Mahasiswa tingkat akhir Universitas Riau dengan keahlian analisis ekonometri time-series, evaluasi perencanaan pembangunan desa berbasis IDM dan SDGs, serta rekam jejak magang di BAPPEDA Kabupaten Bengkalis.
+              Mahasiswa konsentrasi ekonomi regional Universitas Riau dengan keahlian analisis ekonometri time-series, evaluasi perencanaan pembangunan desa berbasis IDM dan SDGs, serta rekam jejak magang di BAPPEDA Kabupaten Bengkalis.
             </p>
 
             {/* Clean Action Buttons: CV button with target="_blank" and Contact link */}
@@ -95,8 +94,7 @@ export default function HeroSection() {
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 rounded-xl bg-accent-brand text-background font-bold text-sm hover:opacity-90 shadow-sm transition-all duration-200 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
               >
-                <span>Buka CV Lengkap</span>
-                <span className="text-xs opacity-75 font-normal">(PDF)</span>
+                <span>Lihat CV</span>
                 <span className="text-sm font-normal ml-0.5">↗</span>
               </a>
 
@@ -111,39 +109,14 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Layered Offset Card */}
+          {/* Right Column: Interactive Photo Deck with Move-to-Back Card Swap Animation */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            <div className="relative w-full max-w-[340px] sm:max-w-[380px]">
-              {/* Offset Accent Backdrop Container */}
-              <div className="absolute top-4 -right-4 w-full h-full rounded-2xl bg-surface-muted border border-border-subtle" />
-
-              {/* Front Portrait Card */}
-              <div className="relative rounded-2xl overflow-hidden bg-surface border border-border-subtle shadow-xl aspect-[3/4]">
-                <SafeImage
-                  src={personalData.portraitImage}
-                  alt="Yuri Marisa - Portofolio Riset Ekonomi Pembangunan"
-                  fill
-                  priority
-                  className="object-cover object-top"
-                />
-
-                {/* Bottom Minimalist Tag */}
-                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-surface/90 backdrop-blur-md border border-border-subtle flex items-center justify-between text-xs">
-                  <div>
-                    <p className="font-bold text-text-primary">Yuri Marisa</p>
-                    <p className="text-[11px] text-text-muted">FEB Universitas Riau</p>
-                  </div>
-                  <span className="px-2.5 py-1 rounded-full bg-surface-muted font-medium text-[10px] text-text-primary">
-                    Semester 7
-                  </span>
-                </div>
-              </div>
-            </div>
+            <HeroPhotoDeck />
           </motion.div>
         </div>
 

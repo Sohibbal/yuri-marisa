@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   description: "Portofolio akademik, riset ekonometri, pengalaman kebijakan publik di BAPPEDA Bengkalis, dan organisasi Yuri Marisa, Mahasiswa Ekonomi Pembangunan Universitas Riau.",
   keywords: ["Yuri Marisa", "Ekonomi Pembangunan", "Universitas Riau", "BAPPEDA Bengkalis", "Riset Ekonometri", "EViews"],
   authors: [{ name: "Yuri Marisa" }],
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/svg+xml' }
+    ],
+    apple: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -24,6 +31,8 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

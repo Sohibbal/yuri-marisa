@@ -11,9 +11,12 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Memberikan jeda waktu lebih tenang dan elegan agar animasi kinetic dinikmati
+    // PENGATURAN DURASI LOADING SCREEN (dalam milidetik: 1000ms = 1 detik):
+    // Ubah angka delayTime di bawah sesuai selera Anda:
+    // - 3200ms (3.2 detik) untuk kunjungan pertama
+    // - 1600ms (1.6 detik) untuk refresh di sesi yang sama
     const hasVisited = sessionStorage.getItem('yuri_visited');
-    const delayTime = hasVisited ? 1400 : 2800;
+    const delayTime = hasVisited ? 1600 : 3200;
 
     const timer = setTimeout(() => {
       setIsVisible(false);
