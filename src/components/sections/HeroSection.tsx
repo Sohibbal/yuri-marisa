@@ -6,22 +6,44 @@ import SafeImage from '@/components/ui/SafeImage';
 import { personalData } from '@/data/portfolioData';
 
 export default function HeroSection() {
-  const fullName = 'Yuri Marisa';
-  const [displayedName, setDisplayedName] = useState('');
+  const words = ['Yuri Marisa', 'Yuriee', 'Urr'];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullName.length) {
-        setDisplayedName(fullName.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 110);
+    const currentWord = words[wordIndex];
+    const typingSpeed = isDeleting ? 65 : 110;
 
-    return () => clearInterval(timer);
-  }, []);
+    if (!isDeleting && currentText === currentWord) {
+      // Pause at full word for 1.8 seconds before deleting
+      const timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+      return () => clearTimeout(timeout);
+    }
+
+    if (isDeleting && currentText === '') {
+      // Pause briefly at empty before typing next word
+      const timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setWordIndex((prev) => (prev + 1) % words.length);
+      }, 250);
+      return () => clearTimeout(timeout);
+    }
+
+    const timeout = setTimeout(() => {
+      setCurrentText((prev) => {
+        if (isDeleting) {
+          return currentWord.substring(0, prev.length - 1);
+        } else {
+          return currentWord.substring(0, prev.length + 1);
+        }
+      });
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isDeleting, wordIndex]);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -37,7 +59,7 @@ export default function HeroSection() {
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
-          {/* Left Column: Typography with Boxed Typewriter Title */}
+          {/* Left Column: Typography with Boxed Looping Typewriter Name */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -50,18 +72,14 @@ export default function HeroSection() {
               <span>Ekonomi Pembangunan • Universitas Riau</span>
             </div>
 
-            {/* Display Headline with Boxed Background & Typing Animation */}
-            <div className="space-y-3">
-              <div className="inline-block p-1.5 sm:p-2 rounded-2xl bg-surface-muted border border-border-subtle shadow-sm">
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-primary px-3 sm:px-4 py-1 flex items-center">
-                  <span>{displayedName}</span>
-                  <span className="inline-block w-[3px] h-[0.9em] bg-text-primary ml-1 animate-pulse" />
+            {/* Display Headline with Boxed Background & Looping Typewriter Name */}
+            <div>
+              <div className="inline-block p-1.5 sm:p-2.5 rounded-2xl bg-surface-muted border border-border-subtle shadow-sm">
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-primary px-3 sm:px-4 py-1 flex items-center min-h-[1.25em]">
+                  <span>{currentText}</span>
+                  <span className="inline-block w-[3px] h-[0.85em] bg-text-primary ml-1.5 animate-pulse" />
                 </h1>
               </div>
-
-              <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-text-primary leading-tight">
-                Riset ekonomi regional & kebijakan pembangunan.
-              </p>
             </div>
 
             {/* Clean Subtitle Paragraph */}
@@ -69,15 +87,18 @@ export default function HeroSection() {
               Mahasiswa tingkat akhir Universitas Riau dengan keahlian analisis ekonometri time-series, evaluasi perencanaan pembangunan desa berbasis IDM dan SDGs, serta rekam jejak magang di BAPPEDA Kabupaten Bengkalis.
             </p>
 
-            {/* Clean Action Buttons (Minimal icons, exact style.png treatment) */}
-            <div className="flex flex-wrap items-center gap-5 pt-1">
-              <button
-                type="button"
-                onClick={() => scrollTo('riset')}
-                className="px-6 py-3.5 rounded-xl bg-accent-brand text-background font-bold text-sm hover:opacity-90 shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
+            {/* Clean Action Buttons: CV button with target="_blank" and Contact link */}
+            <div className="flex flex-wrap items-center gap-5 pt-2">
+              <a
+                href="/cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 rounded-xl bg-accent-brand text-background font-bold text-sm hover:opacity-90 shadow-sm transition-all duration-200 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
               >
-                Lihat Publikasi Riset
-              </button>
+                <span>Buka CV Lengkap</span>
+                <span className="text-xs opacity-75 font-normal">(PDF)</span>
+                <span className="text-sm font-normal ml-0.5">↗</span>
+              </a>
 
               <button
                 type="button"
