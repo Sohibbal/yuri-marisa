@@ -49,6 +49,13 @@ public/images/
 │   ├── lpii-unri.jpg            # Sertifikat Kepengurusan LPII FEB UNRI
 │   ├── bappeda-cert.jpg         # Sertifikat Magang BAPPEDA Bengkalis
 │   └── eviews-workshop.jpg      # Sertifikat Workshop Analisis Data EViews
+├── tools/
+│   ├── eviews.svg               # Icon EViews 12
+│   ├── excel.svg                # Icon Microsoft Excel
+│   ├── mendeley.svg             # Icon Mendeley
+│   ├── word.svg                 # Icon Microsoft Word
+│   ├── canva.svg                # Icon Canva
+│   └── capcut.svg               # Icon CapCut
 └── organizations/
     ├── project-leader.jpg       # Foto Project Leader Proker Divisi
     ├── ie-cup.jpg               # Foto CO Konsumsi IE Cup 2024
