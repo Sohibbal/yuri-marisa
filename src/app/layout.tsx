@@ -10,8 +10,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Yuri Marisa | Portofolio Riset & Pembangunan Daerah",
-  description: "Portofolio akademik, riset ekonometri, pengalaman kebijakan publik di BAPPEDA Bengkalis, dan organisasi Yuri Marisa, Mahasiswa Ekonomi Pembangunan Universitas Riau.",
+  title: "Yuri Marisa",
+  description: "Portofolio Yuri Marisa",
   keywords: ["Yuri Marisa", "Ekonomi Pembangunan", "Universitas Riau", "BAPPEDA Bengkalis", "Riset Ekonometri", "EViews"],
   authors: [{ name: "Yuri Marisa" }],
   icons: {
