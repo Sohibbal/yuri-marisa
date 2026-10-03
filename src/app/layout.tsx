@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="id" className="scroll-smooth dark" suppressHydrationWarning>
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -38,10 +38,11 @@ export default function RootLayout({
             __html: `
               try {
                 const theme = localStorage.getItem('yuri_theme');
-                if (theme === 'dark') {
-                  document.documentElement.classList.add('dark');
-                } else {
+                // Default adalah dark mode, kecuali jika user secara spesifik memilih 'light'
+                if (theme === 'light') {
                   document.documentElement.classList.remove('dark');
+                } else {
+                  document.documentElement.classList.add('dark');
                 }
               } catch (_) {}
             `,

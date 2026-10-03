@@ -5,18 +5,19 @@ import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem('yuri_theme');
-    if (savedTheme === 'dark' || (!savedTheme && document.documentElement.classList.contains('dark'))) {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
-    } else {
+    // Default adalah dark mode, kecuali jika user secara spesifik memilih 'light'
+    if (savedTheme === 'light') {
       setTheme('light');
       document.documentElement.classList.remove('dark');
+    } else {
+      setTheme('dark');
+      document.documentElement.classList.add('dark');
     }
   }, []);
 
