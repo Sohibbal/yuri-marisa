@@ -114,7 +114,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 Yuri Marisa
               </h2>
               <p className="text-xs uppercase tracking-widest text-text-muted font-medium">
-                Ekonomi Pembangunan • Universitas Riau
+                Portfolio
               </p>
             </motion.div>
 

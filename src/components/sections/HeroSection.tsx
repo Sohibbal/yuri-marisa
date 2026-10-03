@@ -103,8 +103,7 @@ export default function HeroSection({ onOpenCv }: HeroSectionProps) {
                 }}
                 className="px-6 py-3.5 rounded-xl bg-accent-brand text-background font-bold text-sm hover:opacity-90 shadow-sm transition-all duration-200 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
               >
-                <span>Lihat CV</span>
-                <span className="text-sm font-normal ml-0.5">📄</span>
+                <span>Lihat CV ↗</span>
               </button>
 
               <button

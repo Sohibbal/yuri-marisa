@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const navItems = [
-  { label: 'Tentang', href: '#tentang' },
+  { label: 'Keahlian', href: '#tentang' },
   { label: 'Riset', href: '#riset' },
   { label: 'Pengalaman', href: '#pengalaman' },
   { label: 'Sertifikat', href: '#sertifikat' },
@@ -74,7 +74,7 @@ export default function Navbar() {
           className="group flex items-center space-x-1 text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-lg p-1"
         >
           <span className="font-extrabold text-lg tracking-tight text-text-primary group-hover:opacity-80 transition-opacity">
-            yurimarisa<span className="text-accent-brand">.id</span>
+            yurimarisa<span className="text-accent-brand pl-0 pr-2 py-1 sm:pl-0 sm:pr-2 sm:py-1 bg-surface-muted rounded-tl-xl rounded-br-xl">.porto</span>
           </span>
         </a>
 

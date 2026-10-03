@@ -79,10 +79,10 @@ export default function ContactSection() {
             >
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-text-primary shrink-0" />
-                <span>{copied ? 'Email Berhasil Disalin!' : 'Salin Email'}</span>
+                <span>{copied ? 'Email' : 'Email'}</span>
               </div>
               <span className="text-xs text-text-muted font-normal">
-                {copied ? 'Tersalin ✓' : 'Salin Alamat'}
+                {copied ? 'Tersalin ✓' : 'Salin.'}
               </span>
             </button>
 

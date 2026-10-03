@@ -70,7 +70,6 @@ export default function Footer() {
 
         <div className="mt-8 pt-6 border-t border-border-subtle/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-text-muted gap-2">
           <p>© 2026 Yuri Marisa. Seluruh hak cipta dilindungi undang-undang.</p>
-          <p>Dirancang & dibangun dengan Next.js, Tailwind CSS, dan Framer Motion.</p>
         </div>
       </div>
     </footer>

@@ -224,7 +224,7 @@ export default function HeroPhotoDeck() {
                 <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-surface/90 backdrop-blur-md border border-border-subtle flex items-center justify-between text-xs shadow-sm">
                   <div>
                     <p className="font-bold text-text-primary tracking-tight">{card.title}</p>
-                    <p className="text-[11px] text-text-muted font-normal">{card.subtitle}</p>
+                    <p className="text-[11px] text-text-primary font-normal">{card.subtitle}</p>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-surface-muted font-medium text-[10px] text-text-primary border border-border-subtle">
                     {card.badge}
