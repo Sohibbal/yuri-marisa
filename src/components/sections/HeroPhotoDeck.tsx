@@ -26,16 +26,16 @@ const initialPhotos: PhotoCardItem[] = [
     id: 'photo-2',
     src: '/images/hero/yuri-portrait-2.jpg',
     title: 'Yuri Marisa',
-    subtitle: 'BAPPEDA Bengkalis',
-    badge: 'Praktik Kebijakan',
+    subtitle: 'Riset & Ekonometri',
+    badge: 'EViews 12',
     objectPosition: 'object-top',
   },
   {
     id: 'photo-3',
     src: '/images/hero/yuri-portrait-3.jpg',
     title: 'Yuri Marisa',
-    subtitle: 'Riset & Ekonometri',
-    badge: 'EViews 12',
+    subtitle: 'BAPPEDA Bengkalis',
+    badge: 'Praktik Kebijakan',
     objectPosition: 'object-center',
   },
   {
@@ -219,14 +219,6 @@ export default function HeroPhotoDeck() {
                     isFront ? 'group-hover:scale-[1.02]' : ''
                   }`}
                 />
-
-                {/* Top Subtle Click Hint (Only on Front Card) */}
-                {isFront && (
-                  <div className="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-full bg-surface/85 backdrop-blur-md border border-border-subtle shadow-sm flex items-center space-x-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
-                    <span className="text-[10px] font-semibold text-text-muted">Ganti Foto</span>
-                    <span className="text-[11px] text-text-primary">↻</span>
-                  </div>
-                )}
 
                 {/* Bottom Metadata Glassmorphism Capsule */}
                 <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-surface/90 backdrop-blur-md border border-border-subtle flex items-center justify-between text-xs shadow-sm">

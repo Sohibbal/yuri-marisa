@@ -4,7 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import HeroPhotoDeck from '@/components/sections/HeroPhotoDeck';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onOpenCv?: () => void;
+}
+
+export default function HeroSection({ onOpenCv }: HeroSectionProps) {
   const words = ['Yuri Marisa', 'Yuriee', 'Urr'];
   const [wordIndex, setWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
@@ -86,17 +90,22 @@ export default function HeroSection() {
               Mahasiswa konsentrasi ekonomi regional Universitas Riau dengan keahlian analisis ekonometri time-series, evaluasi perencanaan pembangunan desa berbasis IDM dan SDGs, serta rekam jejak magang di BAPPEDA Kabupaten Bengkalis.
             </p>
 
-            {/* Clean Action Buttons: CV button with target="_blank" and Contact link */}
+            {/* Clean Action Buttons: CV button with PDF modal and Contact link */}
             <div className="flex flex-wrap items-center gap-5 pt-2">
-              <a
-                href="/cv.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => {
+                  if (onOpenCv) {
+                    onOpenCv();
+                  } else {
+                    window.open('/cv.pdf', '_blank');
+                  }
+                }}
                 className="px-6 py-3.5 rounded-xl bg-accent-brand text-background font-bold text-sm hover:opacity-90 shadow-sm transition-all duration-200 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
               >
                 <span>Lihat CV</span>
-                <span className="text-sm font-normal ml-0.5">↗</span>
-              </a>
+                <span className="text-sm font-normal ml-0.5">📄</span>
+              </button>
 
               <button
                 type="button"

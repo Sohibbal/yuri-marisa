@@ -83,6 +83,7 @@ export const publicationsData: Publication[] = [
     abstract: 'Penelitian ini mengevaluasi keselarasan dokumen Rencana Kerja Pemerintah Desa (RKPDes) di Desa Resam Lapis terhadap indikator Indeks Desa Membangun (IDM) dan target Sustainable Development Goals (SDGs) Desa. Mengkaji implementasi alokasi anggaran dan prioritas pembangunan guna memastikan efektivitas kebijakan di tingkat lokal.',
     focus: 'Evaluasi keselarasan perencanaan pembangunan berbasis data IDM dan capaian indikator SDGs Desa.',
     previewImage: '/images/publications/paper-sinergi.jpg',
+    pdfUrl: '/documents/research/sinergi-resam-lapis.pdf',
   },
   {
     id: 'strategia-modal-manusia',
@@ -99,6 +100,7 @@ export const publicationsData: Publication[] = [
     abstract: 'Menganalisis pengaruh variabel pendidikan (Rata-rata Lama Sekolah / RLS) dan kesehatan (Usia Harapan Hidup / UHH) terhadap Indeks Pembangunan Manusia (IPM/HDI) di Provinsi Riau periode 2015 sampai 2024. Penelitian mengaplikasikan metode regresi linier berganda menggunakan software EViews 12 berbasis data resmi Badan Pusat Statistik (BPS).',
     focus: 'Regresi linier berganda EViews 12 membuktikan signifikansi simultan pendidikan dan kesehatan terhadap modal manusia regional.',
     previewImage: '/images/publications/paper-strategia.jpg',
+    pdfUrl: '/documents/research/strategia-modal-manusia.pdf',
   },
   {
     id: 'kapalamada-agroindustri-sagu',
@@ -115,6 +117,7 @@ export const publicationsData: Publication[] = [
     abstract: 'Mengeksplorasi potensi hilirisasi dan rantai nilai komoditas sagu di Kabupaten Kepulauan Meranti sebagai produsen sagu terbesar di Riau. Merumuskan strategi intervensi kebijakan publik dan penguatan kelembagaan pelaku usaha guna mendongkrak daya saing serta nilai tambah ekonomi komoditas lokal di pasar nasional.',
     focus: 'Analisis strategi rantai nilai komoditas unggulan daerah dan peningkatan nilai tambah produk turunan sagu.',
     previewImage: '/images/publications/paper-kapalamada.jpg',
+    pdfUrl: '/documents/research/kapalamada-agroindustri-sagu.pdf',
   },
 ];
 

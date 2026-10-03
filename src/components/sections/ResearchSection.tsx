@@ -7,9 +7,10 @@ import { publicationsData } from '@/data/portfolioData';
 
 interface ResearchSectionProps {
   onSelectImage?: (image: { src: string; title: string; subtitle?: string }) => void;
+  onSelectPdf?: (pdf: { pdfUrl: string; title: string; subtitle?: string }) => void;
 }
 
-export default function ResearchSection({ onSelectImage }: ResearchSectionProps) {
+export default function ResearchSection({ onSelectImage, onSelectPdf }: ResearchSectionProps) {
   return (
     <section id="riset" className="py-20 md:py-28 bg-background border-t border-border-subtle">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,14 +33,21 @@ export default function ResearchSection({ onSelectImage }: ResearchSectionProps)
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.12 }}
-              onClick={() =>
-                onSelectImage &&
-                onSelectImage({
-                  src: pub.previewImage,
-                  title: pub.title,
-                  subtitle: `${pub.journal} • ${pub.category}`,
-                })
-              }
+              onClick={() => {
+                if (onSelectPdf && pub.pdfUrl) {
+                  onSelectPdf({
+                    pdfUrl: pub.pdfUrl,
+                    title: pub.title,
+                    subtitle: `${pub.journal} • ${pub.category}`,
+                  });
+                } else if (onSelectImage) {
+                  onSelectImage({
+                    src: pub.previewImage,
+                    title: pub.title,
+                    subtitle: `${pub.journal} • ${pub.category}`,
+                  });
+                }
+              }}
               className="flex flex-col justify-between rounded-2xl bg-surface border border-border-subtle p-6 hover:border-text-primary/40 transition-all duration-200 cursor-pointer group shadow-sm"
             >
               <div className="space-y-4">
@@ -53,7 +61,7 @@ export default function ResearchSection({ onSelectImage }: ResearchSectionProps)
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="text-[11px] font-medium text-white px-3 py-1.5 rounded-lg bg-black/70">
-                      Klik untuk Pratinjau Naskah
+                      Klik untuk Baca Naskah PDF
                     </span>
                   </div>
                 </div>
@@ -85,7 +93,7 @@ export default function ResearchSection({ onSelectImage }: ResearchSectionProps)
 
               {/* Card Footer Action */}
               <div className="pt-4 mt-4 border-t border-border-subtle flex items-center justify-between text-xs font-semibold text-text-primary">
-                <span>Lihat Naskah Publikasi</span>
+                <span>Baca Naskah PDF</span>
                 <span>→</span>
               </div>
             </motion.div>

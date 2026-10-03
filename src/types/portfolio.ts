@@ -8,6 +8,7 @@ export interface Publication {
   focus: string;
   link?: string;
   previewImage: string;
+  pdfUrl?: string;
 }
 
 export interface ExperienceItem {
