@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 
@@ -23,7 +22,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Section scroll spy
       const sections = navItems.map((item) => item.href.substring(1));
       const scrollPosition = window.scrollY + 140;
 
@@ -61,30 +59,27 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-background/85 backdrop-blur-md border-b border-border-subtle shadow-sm py-3.5'
+          ? 'bg-background/90 backdrop-blur-md border-b border-border-subtle py-3.5'
           : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand / Logo */}
+        {/* Brand / Logo (Mirroring botku.id style) */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="group flex items-center space-x-2 text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-lg p-1"
+          className="group flex items-center space-x-1 text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-lg p-1"
         >
-          <span className="w-8 h-8 rounded-lg bg-accent-brand text-white font-bold flex items-center justify-center text-sm shadow-sm group-hover:bg-accent-hover transition-colors">
-            YM
-          </span>
-          <span className="font-bold text-lg tracking-tight text-text-primary group-hover:text-accent-brand transition-colors">
-            Yuri Marisa
+          <span className="font-extrabold text-lg tracking-tight text-text-primary group-hover:opacity-80 transition-opacity">
+            yurimarisa<span className="text-accent-brand">.id</span>
           </span>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-1 border border-border-subtle/80 bg-surface/70 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
+        {/* Desktop Navigation Links (Clean plain text links like style.png) */}
+        <nav className="hidden md:flex items-center space-x-7 text-xs font-semibold text-text-muted">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.substring(1);
             return (
@@ -92,10 +87,8 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`px-3.5 py-1.5 text-xs font-medium rounded-full transition-all duration-200 ${
-                  isActive
-                    ? 'bg-accent-brand text-white shadow-sm'
-                    : 'text-text-muted hover:text-text-primary hover:bg-surface-muted/60'
+                className={`transition-colors hover:text-text-primary ${
+                  isActive ? 'text-text-primary font-bold' : ''
                 }`}
               >
                 {item.label}
@@ -104,14 +97,14 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Action: Theme Switcher & Contact CTA */}
-        <div className="flex items-center space-x-3">
+        {/* Right Action: Theme Switcher & Contact CTA (Mirroring style.png) */}
+        <div className="flex items-center space-x-3.5">
           <ThemeToggle />
 
           <a
             href="#kontak"
             onClick={(e) => handleNavClick(e, '#kontak')}
-            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-full bg-text-primary text-background hover:bg-accent-brand hover:text-white transition-all duration-200 shadow-sm focus-visible:ring-2 focus-visible:ring-accent-brand focus-visible:outline-none"
+            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold rounded-xl bg-accent-brand text-background hover:opacity-90 transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-accent-brand focus-visible:outline-none"
           >
             Hubungi
           </a>
@@ -121,7 +114,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
-            className="md:hidden p-2 rounded-lg border border-border-subtle bg-surface text-text-primary hover:text-accent-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
+            className="md:hidden p-2 rounded-lg border border-border-subtle bg-surface text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -130,7 +123,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-border-subtle bg-surface/95 backdrop-blur-lg px-4 pt-3 pb-6 space-y-2 shadow-lg animate-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden border-b border-border-subtle bg-surface/98 backdrop-blur-lg px-4 pt-3 pb-6 space-y-2 shadow-xl animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-1">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
@@ -141,7 +134,7 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={`px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
                     isActive
-                      ? 'bg-accent-brand text-white font-semibold'
+                      ? 'bg-surface-muted text-text-primary font-bold'
                       : 'text-text-muted hover:bg-surface-muted hover:text-text-primary'
                   }`}
                 >
@@ -155,7 +148,7 @@ export default function Navbar() {
             <a
               href="#kontak"
               onClick={(e) => handleNavClick(e, '#kontak')}
-              className="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-semibold rounded-xl bg-accent-brand text-white hover:bg-accent-hover transition-colors shadow-sm"
+              className="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-bold rounded-xl bg-accent-brand text-background hover:opacity-90 transition-colors shadow-sm"
             >
               Hubungi Yuri Marisa
             </a>

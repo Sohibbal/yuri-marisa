@@ -3,27 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: #F4F7FA;
+  --background: #FBF8F3;
   --surface: #FFFFFF;
-  --surface-muted: #E6EFF5;
-  --border-subtle: #E2E8F0;
-  --text-primary: #0F172A;
-  --text-muted: #475569;
-  --accent-brand: #2563EB;
-  --accent-hover: #1D4ED8;
-  --accent-soft: #DBEAFE;
+  --surface-muted: #F3ECE1;
+  --border-subtle: #E8E0D2;
+  --text-primary: #0A1329;
+  --text-muted: #4A576E;
+  --accent-brand: #0A1329;
+  --accent-hover: #1A284A;
+  --accent-soft: #EFE7DB;
 }
 
 .dark {
-  --background: #090D16;
-  --surface: #111827;
-  --surface-muted: #162032;
-  --border-subtle: #1E293B;
-  --text-primary: #F8FAFC;
-  --text-muted: #94A3B8;
-  --accent-brand: #38BDF8;
-  --accent-hover: #60A5FA;
-  --accent-soft: #0C4A6E;
+  --background: #070D1D;
+  --surface: #0D162C;
+  --surface-muted: #13203E;
+  --border-subtle: #1D2E52;
+  --text-primary: #FBF8F3;
+  --text-muted: #94A6C2;
+  --accent-brand: #FBF8F3;
+  --accent-hover: #FFFFFF;
+  --accent-soft: #162447;
 }
 
 html {
@@ -35,5 +35,6 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.015em;
 }

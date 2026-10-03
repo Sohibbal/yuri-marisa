@@ -14,12 +14,9 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand Info */}
           <div className="space-y-1 text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start space-x-2">
-              <span className="w-7 h-7 rounded-lg bg-accent-brand text-white font-bold flex items-center justify-center text-xs shadow-sm">
-                YM
-              </span>
-              <span className="font-bold text-base tracking-tight text-text-primary">
-                Yuri Marisa
+            <div className="flex items-center justify-center md:justify-start space-x-1">
+              <span className="font-extrabold text-base tracking-tight text-text-primary">
+                yurimarisa<span className="text-accent-brand">.id</span>
               </span>
             </div>
             <p className="text-xs text-text-muted">

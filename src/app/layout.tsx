@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Yuri Marisa | Portofolio Riset & Pembangunan Daerah",
@@ -31,7 +39,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased selection:bg-accent-soft selection:text-accent-brand">
+      <body className={`${plusJakartaSans.variable} font-sans antialiased selection:bg-accent-soft selection:text-text-primary`}>
         {children}
       </body>
     </html>
